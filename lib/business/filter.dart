@@ -5,8 +5,13 @@ abstract class Filter implements Filterable {
   int findTopTeamIdFor({required List<Match> playedMatches}) =>
       throw UnimplementedError();
 
-  Map<int, int> _sortResultsOfPlayedMatches(Map<int, int> unsortedResults) =>
-      throw UnimplementedError();
+  Map<int, int> _sortResultsOfPlayedMatches(Map<int, int> unsortedResults) {
+    final List<MapEntry<int, int>> orderedEntries = unsortedResults.entries
+        .toList()
+      ..sort((teamA, teamB) => teamA.value.compareTo(teamB.value));
+
+    return Map.fromEntries(orderedEntries);
+  }
 
   Map<int, int> _extractResultsFromPlayedMatches(List<Match> playedMatches) {
     final Map<int, int> teamsResult = {};
