@@ -46,7 +46,9 @@ class MatchesService {
           {required DateTime endDate, required int period}) =>
       throw UnimplementedError();
 
-  bool _competitionEnded(DateTime? endDate) => throw UnimplementedError();
+  bool _competitionEnded(DateTime? endDate) {
+    return endDate != null && endDate.isBefore(DateTime.now());
+  }
 
   Future<Team?> _findTopTeam({required int topTeamId}) async {
     Result<Team, NetworkError> resultTeam =
