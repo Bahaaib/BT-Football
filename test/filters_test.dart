@@ -29,4 +29,13 @@ void main() {
 
     expect(mostWinningTeam, manchesterCityTeamId);
   });
+
+  test(
+      'when matches is filtered by most losing team, '
+          'it should get Watford FC', () async {
+    const int watfordTeamId = 346;
+    int mostLosingTeam = await _getTopTeamIdFor(filter: MostLosing());
+
+    expect(mostLosingTeam, watfordTeamId);
+  });
 }
