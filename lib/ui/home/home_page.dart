@@ -5,6 +5,7 @@ import 'package:bt_football/resources/strings.dart';
 import 'package:bt_football/ui/shared_widgets/empty_widget.dart';
 import 'package:bt_football/ui/shared_widgets/error_widget.dart';
 import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
+import 'package:bt_football/ui/team/team_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,6 +51,10 @@ class _HomePageState extends State<HomePage> {
 
     if (state is MostWinningTeamError) {
       return ErrorView(message: state.message);
+    }
+
+    if (state is MostWinningTeamFetched) {
+      return TeamInfo(team: state.team);
     }
 
     return const EmptyView();
