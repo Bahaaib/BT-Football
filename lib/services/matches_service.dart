@@ -48,6 +48,16 @@ class MatchesService {
 
   bool _competitionEnded(DateTime? endDate) => throw UnimplementedError();
 
-  Future<Team?> _findTopTeam({required int topTeamId}) async =>
-      throw UnimplementedError();
+  Future<Team?> _findTopTeam({required int topTeamId}) async {
+    Result<Team, NetworkError> resultTeam =
+    await GetIt.instance<NetworkPerformer>().perform<Team, Team>(
+        route: FootballApiClient.team(topTeamId), responseType: Team());
+
+    Team? topTeam;
+
+    resultTeam.when(
+        success: (team) => topTeam = team, failure: (error) => throw error);
+
+    return topTeam;
+  }
 }
