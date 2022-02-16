@@ -41,6 +41,24 @@ void main() {
     expect(homePage, findsOneWidget);
   }
 
+  group('test home page states', () {
+    testWidgets('when app starts, should display home page',
+            (WidgetTester tester) async {
+          await _testWidget(
+              tester: tester,
+              givenState: MatchesInitial(),
+              expectedWidget: HomePage);
+        });
+
+    testWidgets('when start fetching a team, should display loading widget',
+            (WidgetTester tester) async {
+          await _testWidget(
+              tester: tester,
+              givenState: MostWinningTeamLoading(),
+              expectedWidget: LoadingView);
+        });
+  });
+
   setUpAll(() async {
     _injectDependencies();
     BlocUtil.stubMatchesBloc();
