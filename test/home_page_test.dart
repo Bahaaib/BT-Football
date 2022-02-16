@@ -5,6 +5,7 @@ import 'package:bt_football/ui/home/home_page.dart';
 import 'package:bt_football/ui/shared_widgets/error_widget.dart';
 import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
 import 'package:bt_football/ui/team/landscape_team.dart';
+import 'package:bt_football/ui/team/tablet_portrait_team.dart';
 import 'package:bt_football/ui/team/team_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
