@@ -1,10 +1,15 @@
-import 'package:bt_football/bloc/matches/matches_bloc.dart';
-import 'package:bt_football/bloc/matches/matches_event.dart';
-import 'package:bt_football/bloc/matches/matches_state.dart';
+import 'package:bt_football/bloc/matches/exports.dart';
+import 'package:bt_football/models/exports.dart';
+import 'package:bt_football/resources/dimens.dart';
 import 'package:bt_football/resources/strings.dart';
 import 'package:bt_football/ui/shared_widgets/empty_widget.dart';
 import 'package:bt_football/ui/shared_widgets/error_widget.dart';
 import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
+import 'package:bt_football/ui/team/landscape_team.dart';
+import 'package:bt_football/ui/team/mobile_portrait_team.dart';
+import 'package:bt_football/ui/team/squad/squad_item.dart';
+import 'package:bt_football/ui/team/squad/squad_list.dart';
+import 'package:bt_football/ui/team/tablet_portrait_team.dart';
 import 'package:bt_football/ui/team/team_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,6 +63,55 @@ class _HomePageState extends State<HomePage> {
     }
 
     return const EmptyView();
+  }
+
+  Widget _buildMobilePortraitTeam(Team? mostWinningTeam) {
+    final Team? team = mostWinningTeam;
+    if (team == null) return const SizedBox();
+
+    return MobilePortraitTeam(
+      squad: SquadList(
+        itemsCount: team.players?.length,
+        squadItemBuilder: (_, int index) =>
+            SquadItem(player: team.players?[index]),
+      ),
+      teamInfo: TeamInfo(team: team),
+    );
+  }
+
+  Widget _buildTabletPortraitTeam(Team? mostWinningTeam) {
+    final Team? team = mostWinningTeam;
+    if (team == null) return const SizedBox();
+
+    return TabletPortraitTeam(
+      squad: SquadList(
+        itemsCount: team.players?.length,
+        squadItemBuilder: (_, int index) =>
+            SquadItem(player: team.players?[index]),
+      ),
+      teamInfo: TeamInfo(team: team),
+    );
+  }
+
+  Widget _buildLandscapeTeam(Team? mostWinningTeam) {
+    final Team? team = mostWinningTeam;
+    if (team == null) return const SizedBox();
+
+    return LandscapeTeam(
+      squad: SquadList(
+        itemsCount: team.players?.length,
+        squadItemBuilder: (_, int index) => SquadItem(
+          player: team.players?[index],
+          margin: const EdgeInsets.symmetric(
+              vertical: AppDimens.zero, horizontal: AppDimens.five),
+        ),
+      ),
+      teamInfo: TeamInfo(
+        team: team,
+        margin: const EdgeInsets.symmetric(
+            vertical: AppDimens.zero, horizontal: AppDimens.zero),
+      ),
+    );
   }
 
   void _fetchMostWinningTeam() {
