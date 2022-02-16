@@ -23,6 +23,11 @@ void main() {
     GetIt.instance.registerLazySingleton<MatchesBloc>(() => MockMatchesBloc());
   }
 
+  setUpAll(() async {
+    _injectDependencies();
+    BlocUtil.stubMatchesBloc();
+  });
+
   Future<void> _testWidget(
       {required WidgetTester tester,
       required MatchesState givenState,
@@ -78,11 +83,6 @@ void main() {
           givenState: MostWinningTeamFetched(simpleTeam),
           expectedWidget: TeamInfo);
     });
-  });
-
-  setUpAll(() async {
-    _injectDependencies();
-    BlocUtil.stubMatchesBloc();
   });
 
   tearDownAll(() => GetIt.instance.reset);
