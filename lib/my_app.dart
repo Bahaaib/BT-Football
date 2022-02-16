@@ -5,6 +5,7 @@ import 'package:bt_football/routing/main_router.gr.dart';
 import 'package:bt_football/services/matches_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import 'network/layers/network_connectiviry.dart';
@@ -32,7 +33,10 @@ class _MyAppState extends State<MyApp> {
       routeInformationParser: _appRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,
       theme: AppThemes.englishAppTheme,
-      builder: (_, widget) => widget ?? Container(),
+      builder: (_, widget) => BlocProvider(
+        create: (_) => GetIt.instance<MatchesBloc>(),
+        child: widget ?? Container(),
+      ),
     );
   }
 
