@@ -43,8 +43,9 @@ class MatchesService {
       throw UnimplementedError();
 
   DateTime _calculateStartDate(
-          {required DateTime endDate, required int period}) =>
-      throw UnimplementedError();
+      {required DateTime endDate, required int period}) {
+    return endDate.subtract(Duration(days: period));
+  }
 
   bool _competitionEnded(DateTime? endDate) {
     return endDate != null && endDate.isBefore(DateTime.now());
