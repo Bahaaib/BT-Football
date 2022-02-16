@@ -40,13 +40,26 @@ class MatchesService {
     return match.date!.isAfter(startDate) && match.date!.isBefore(endDate);
   }
 
+  Future<DateTime> _calculateEndDate(
+      {required List<Match> finishedMatches,
+      required String competition}) async {
+    final DateTime? competitionEndDate =
+        await _fetchCompetitionEndDay(competition: competition);
+
+    if (_competitionEnded(competitionEndDate)) {
+      return finishedMatches.last.date!;
+    }
+
+    return DateTime.now();
+  }
+
   Future<DateTime?> _fetchCompetitionEndDay(
       {required String competition}) async {
     final Result<Competition, NetworkError> resultCompetition =
-    await GetIt.instance<NetworkPerformer>()
-        .perform<Competition, Competition>(
-        route: FootballApiClient.competition(competition),
-        responseType: Competition());
+        await GetIt.instance<NetworkPerformer>()
+            .perform<Competition, Competition>(
+                route: FootballApiClient.competition(competition),
+                responseType: Competition());
 
     Competition? result;
 
@@ -66,8 +79,8 @@ class MatchesService {
 
   Future<Team?> _findTopTeam({required int topTeamId}) async {
     Result<Team, NetworkError> resultTeam =
-    await GetIt.instance<NetworkPerformer>().perform<Team, Team>(
-        route: FootballApiClient.team(topTeamId), responseType: Team());
+        await GetIt.instance<NetworkPerformer>().perform<Team, Team>(
+            route: FootballApiClient.team(topTeamId), responseType: Team());
 
     Team? topTeam;
 
