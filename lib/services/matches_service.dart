@@ -1,3 +1,4 @@
+import 'package:bt_football/business/filter.dart';
 import 'package:bt_football/models/exports.dart';
 import 'package:bt_football/network/clients/football_api_client.dart';
 import 'package:bt_football/network/layers/network_performer.dart';
@@ -7,7 +8,9 @@ import 'package:get_it/get_it.dart';
 
 class MatchesService {
   Future<Team> getTopTeamBy(
-          {required periodInDays, required String competition}) async =>
+          {required Filter filter,
+          required periodInDays,
+          required String competition}) async =>
       throw UnimplementedError();
 
   Future<List<Match>> fetchCompetitionMatches(String competition) async {
