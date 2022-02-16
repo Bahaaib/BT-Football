@@ -1,21 +1,22 @@
 import 'dart:convert';
 
 import 'package:bt_football/network/layers/network_connectivity.dart';
+import 'package:bt_football/resources/strings.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mockito/mockito.dart';
 
 class MockUtil {
   static Future<Map<String, dynamic>> loadMatchesJson() async {
-    return await _loadJson(path: 'assets/json/matches_response_mock.json');
+    return await _loadJson(path: CodeStrings.matchesMockPath);
   }
 
   static Future<Map<String, dynamic>> loadCompetitionJson() async {
-    return await _loadJson(path: 'assets/json/competition_response_mock.json');
+    return await _loadJson(path: CodeStrings.competitionMockPath);
   }
 
   static Future<Map<String, dynamic>> loadTeamJson() async {
-    return await _loadJson(path: 'assets/json/team_response_mock.json');
+    return await _loadJson(path: CodeStrings.teamMockPath);
   }
 
   static Future<Map<String, dynamic>> _loadJson({required String path}) async {
