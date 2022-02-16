@@ -28,6 +28,7 @@ void main() {
 
   setUpAll(() async {
     _injectDependencies();
+    await _requestsUtil.prepareAllHttpMocks();
   });
 
   group('matches service class', () {
