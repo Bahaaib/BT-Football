@@ -26,7 +26,11 @@ class MostLosing extends Filter {
 class MostDraw extends Filter {
   @override
   List<int?>? getTeamIdsByMatchResult({required Match match}) {
-    // TODO: implement getTeamIdsByMatchResult
-    throw UnimplementedError();
+    final Score? score = match.score;
+    if (score == null) return null;
+    if (score.winner == CodeStrings.draw) {
+      return [match.homeTeam?.id, match.awayTeam?.id];
+    }
+    return null;
   }
 }
