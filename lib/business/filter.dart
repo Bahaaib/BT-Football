@@ -4,10 +4,10 @@ import 'package:bt_football/models/exports.dart';
 abstract class Filter implements Filterable {
   int findTopTeamIdFor({required List<Match> playedMatches}) {
     final Map<int, int> unorderedResultsOfTeams =
-    _extractResultsFromPlayedMatches(playedMatches);
+        _extractResultsFromPlayedMatches(playedMatches);
 
     final Map<int, int> resultsOfTeamsInOrder =
-    _sortResultsOfPlayedMatches(unorderedResultsOfTeams);
+        _sortResultsOfPlayedMatches(unorderedResultsOfTeams);
 
     return resultsOfTeamsInOrder.keys.last;
   }
