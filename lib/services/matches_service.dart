@@ -9,10 +9,28 @@ import 'package:get_it/get_it.dart';
 
 class MatchesService {
   Future<Team> getTopTeamBy(
-          {required Filter filter,
-          required periodInDays,
-          required String competition}) async =>
-      throw UnimplementedError();
+      {required Filter filter,
+      required periodInDays,
+      required String competition}) async {
+    final List<Match> finishedMatches =
+        await fetchCompetitionMatches(competition);
+
+    if (finishedMatches.isEmpty) throw CodeStrings.noMatches;
+
+    final List<Match> matchesInPeriod = await _getMatchesInPeriod(
+      finishedMatches: finishedMatches,
+      competition: competition,
+      periodInDays: periodInDays,
+    );
+
+    int topTeamId = filter.findTopTeamIdFor(playedMatches: matchesInPeriod);
+
+    Team? topTeam = await _findTopTeam(topTeamId: topTeamId);
+
+    if (topTeam == null) throw CodeStrings.noTeam;
+
+    return topTeam;
+  }
 
   Future<List<Match>> fetchCompetitionMatches(String competition) async {
     final Result<List<Match>, NetworkError> matchesResult =
@@ -32,14 +50,14 @@ class MatchesService {
 
   Future<List<Match>> _getMatchesInPeriod(
       {required List<Match> finishedMatches,
-        required String competition,
-        int periodInDays = 30}) async {
+      required String competition,
+      int periodInDays = 30}) async {
     if (periodInDays <= 0) throw CodeStrings.negativePeriod;
 
     final DateTime endDate = await _calculateEndDate(
         finishedMatches: finishedMatches, competition: competition);
     final DateTime startDate =
-    _calculateStartDate(endDate: endDate, period: periodInDays);
+        _calculateStartDate(endDate: endDate, period: periodInDays);
 
     return finishedMatches
         .where((match) => _isInPeriod(match, startDate, endDate))
