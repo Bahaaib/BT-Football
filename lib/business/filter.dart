@@ -2,8 +2,15 @@ import 'package:bt_football/business/filterable.dart';
 import 'package:bt_football/models/exports.dart';
 
 abstract class Filter implements Filterable {
-  int findTopTeamIdFor({required List<Match> playedMatches}) =>
-      throw UnimplementedError();
+  int findTopTeamIdFor({required List<Match> playedMatches}) {
+    final Map<int, int> unorderedResultsOfTeams =
+    _extractResultsFromPlayedMatches(playedMatches);
+
+    final Map<int, int> resultsOfTeamsInOrder =
+    _sortResultsOfPlayedMatches(unorderedResultsOfTeams);
+
+    return resultsOfTeamsInOrder.keys.last;
+  }
 
   Map<int, int> _sortResultsOfPlayedMatches(Map<int, int> unsortedResults) {
     final List<MapEntry<int, int>> orderedEntries = unsortedResults.entries
