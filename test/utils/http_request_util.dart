@@ -13,6 +13,12 @@ class RequestUtil {
     return _dio;
   }
 
+  Future<void> mockCompetition() async {
+    final Map<String, dynamic> response = await MockUtil.loadCompetitionJson();
+    const String premierLeaguePath = 'competitions/PL';
+    _mockHttpRequest(path: premierLeaguePath, response: response);
+  }
+
   Future<void> mockTeam() async {
     final Map<String, dynamic> response = await MockUtil.loadTeamJson();
     const String liverpoolTeamPath = 'teams/64';
@@ -21,8 +27,8 @@ class RequestUtil {
 
   void _mockHttpRequest(
       {required String path,
-        required Map<String, dynamic> response,
-        Map<String, dynamic>? queryParams}) {
+      required Map<String, dynamic> response,
+      Map<String, dynamic>? queryParams}) {
     _dioAdapter.onGet(path, (request) async {
       request.reply(200, response);
     },
