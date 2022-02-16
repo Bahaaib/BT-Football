@@ -2,9 +2,6 @@ import 'package:bt_football/bloc/matches/exports.dart';
 import 'package:bt_football/models/exports.dart';
 import 'package:bt_football/resources/dimens.dart';
 import 'package:bt_football/resources/strings.dart';
-import 'package:bt_football/ui/shared_widgets/empty_widget.dart';
-import 'package:bt_football/ui/shared_widgets/error_widget.dart';
-import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
 import 'package:bt_football/ui/team/landscape_team.dart';
 import 'package:bt_football/ui/team/mobile_portrait_team.dart';
 import 'package:bt_football/ui/team/squad/squad_item.dart';
@@ -13,6 +10,8 @@ import 'package:bt_football/ui/team/tablet_portrait_team.dart';
 import 'package:bt_football/ui/team/team_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../shared_widgets/exports.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -59,7 +58,16 @@ class _HomePageState extends State<HomePage> {
     }
 
     if (state is MostWinningTeamFetched) {
-      return TeamInfo(team: state.team);
+      return DeviceLayout(
+        onMobile: OrientationLayout(
+          onPortrait: _buildMobilePortraitTeam(state.team),
+          onLandscape: _buildLandscapeTeam(state.team),
+        ),
+        onTablet: OrientationLayout(
+          onPortrait: _buildTabletPortraitTeam(state.team),
+          onLandscape: _buildLandscapeTeam(state.team),
+        ),
+      );
     }
 
     return const EmptyView();
