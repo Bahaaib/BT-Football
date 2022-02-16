@@ -1,6 +1,7 @@
 import 'package:bt_football/bloc/matches/matches_bloc.dart';
 import 'package:bt_football/bloc/matches/matches_state.dart';
 import 'package:bt_football/ui/home/home_page.dart';
+import 'package:bt_football/ui/shared_widgets/error_widget.dart';
 import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

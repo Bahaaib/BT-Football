@@ -3,6 +3,7 @@ import 'package:bt_football/bloc/matches/matches_event.dart';
 import 'package:bt_football/bloc/matches/matches_state.dart';
 import 'package:bt_football/resources/strings.dart';
 import 'package:bt_football/ui/shared_widgets/empty_widget.dart';
+import 'package:bt_football/ui/shared_widgets/error_widget.dart';
 import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,6 +46,10 @@ class _HomePageState extends State<HomePage> {
   Widget _mapViewToState(MatchesState state) {
     if (state is MostWinningTeamLoading) {
       return const LoadingView();
+    }
+
+    if (state is MostWinningTeamError) {
+      return ErrorView(message: state.message);
     }
 
     return const EmptyView();
