@@ -1,0 +1,145 @@
+{
+  "id": 2021,
+  "area": {
+    "id": 2072,
+    "name": "England"
+  },
+  "name": "Premier League",
+  "code": "PL",
+  "emblemUrl": null,
+  "plan": "TIER_ONE",
+  "currentSeason": {
+    "id": 733,
+    "startDate": "2021-08-13",
+    "endDate": "2022-05-22",
+    "currentMatchday": 25,
+    "winner": null
+  },
+  "seasons": [
+    {
+      "id": 733,
+      "startDate": "2021-08-13",
+      "endDate": "2022-05-22",
+      "currentMatchday": 25,
+      "winner": null
+    },
+    {
+      "id": 619,
+      "startDate": "2020-09-12",
+      "endDate": "2021-05-23",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crestUrl": "https://crests.football-data.org/65.png"
+      }
+    },
+    {
+      "id": 468,
+      "startDate": "2019-08-09",
+      "endDate": "2020-07-26",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 64,
+        "name": "Liverpool FC",
+        "shortName": "Liverpool",
+        "tla": "LIV",
+        "crestUrl": "https://crests.football-data.org/64.png"
+      }
+    },
+    {
+      "id": 151,
+      "startDate": "2018-08-10",
+      "endDate": "2019-05-12",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crestUrl": "https://crests.football-data.org/65.png"
+      }
+    },
+    {
+      "id": 23,
+      "startDate": "2017-08-11",
+      "endDate": "2018-05-13",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crestUrl": "https://crests.football-data.org/65.png"
+      }
+    },
+    {
+      "id": 256,
+      "startDate": "2016-08-13",
+      "endDate": "2017-05-21",
+      "currentMatchday": null,
+      "winner": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "shortName": "Chelsea",
+        "tla": "CHE",
+        "crestUrl": "https://crests.football-data.org/61.png"
+      }
+    },
+    {
+      "id": 257,
+      "startDate": "2015-08-08",
+      "endDate": "2016-05-17",
+      "currentMatchday": null,
+      "winner": {
+        "id": 338,
+        "name": "Leicester City FC",
+        "shortName": "Leicester City",
+        "tla": "LEI",
+        "crestUrl": "https://crests.football-data.org/338.png"
+      }
+    },
+    {
+      "id": 258,
+      "startDate": "2014-08-16",
+      "endDate": "2015-05-24",
+      "currentMatchday": null,
+      "winner": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "shortName": "Chelsea",
+        "tla": "CHE",
+        "crestUrl": "https://crests.football-data.org/61.png"
+      }
+    },
+    {
+      "id": 259,
+      "startDate": "2013-08-17",
+      "endDate": "2014-05-11",
+      "currentMatchday": null,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crestUrl": "https://crests.football-data.org/65.png"
+      }
+    },
+    {
+      "id": 260,
+      "startDate": "2012-08-18",
+      "endDate": "2013-05-19",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crestUrl": "https://crests.football-data.org/66.png"
+      }
+    }
+  ],
+  "lastUpdated": "2021-04-17T02:20:14Z"
+}
