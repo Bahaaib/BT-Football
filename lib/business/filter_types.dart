@@ -8,3 +8,11 @@ class MostWinning extends Filter {
     throw UnimplementedError();
   }
 }
+
+class MostLosing extends Filter {
+  @override
+  List<int?>? getTeamIdsByMatchResult({required Match match}) {
+    // TODO: implement getTeamIdsByMatchResult
+    throw UnimplementedError();
+  }
+}
