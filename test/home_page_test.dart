@@ -89,8 +89,8 @@ void main() {
 
   Future<void> _testWidgetOrientation(
       {required WidgetTester tester,
-        required Size orientationSize,
-        required Type expectedWidget}) async {
+      required Size orientationSize,
+      required Type expectedWidget}) async {
     final MatchesBloc mockMatchesBloc = GetIt.instance<MatchesBloc>();
     final Team simpleTeam = Team(name: 'Liverpool FC', foundationYear: 1892);
     const double emulationRation = 3.0;
@@ -117,21 +117,21 @@ void main() {
 
   group('test home page orientation', () {
     testWidgets('when screen width > 600 px, should display in landscape mode',
-            (WidgetTester tester) async {
-          await _testWidgetOrientation(
-              tester: tester,
-              orientationSize: const Size(800, 600.0),
-              expectedWidget: LandscapeTeam);
-        });
+        (WidgetTester tester) async {
+      await _testWidgetOrientation(
+          tester: tester,
+          orientationSize: const Size(800, 600.0),
+          expectedWidget: LandscapeTeam);
+    });
 
     testWidgets(
         'when screen height > 600 px, should display in tablet portrait mode',
-            (WidgetTester tester) async {
-          await _testWidgetOrientation(
-              tester: tester,
-              orientationSize: const Size(1700, 2650),
-              expectedWidget: TabletPortraitTeam);
-        });
+        (WidgetTester tester) async {
+      await _testWidgetOrientation(
+          tester: tester,
+          orientationSize: const Size(1700, 2650),
+          expectedWidget: TabletPortraitTeam);
+    });
   });
 
   tearDownAll(() => GetIt.instance.reset);
