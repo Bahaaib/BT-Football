@@ -32,7 +32,7 @@ void main() {
     await _requestsUtil.prepareAllHttpMocks();
   });
 
-  group('matches service class', () {
+  group('test matches service class', () {
     test(
         'when fetching competition matches while network is connected,'
         ' should get list of matches', () async {
