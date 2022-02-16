@@ -14,6 +14,12 @@ class RequestUtil {
     return _dio;
   }
 
+  Future<void> prepareAllHttpMocks() async {
+    await mockMatches();
+    await mockCompetition();
+    await mockTeam();
+  }
+
   Future<void> mockMatches() async {
     final Map<String, dynamic> response = await MockUtil.loadMatchesJson();
     const String premierLeagueMatchesPath = 'competitions/PL/matches';
