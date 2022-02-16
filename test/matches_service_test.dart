@@ -1,3 +1,4 @@
+import 'package:bt_football/business/filter_types.dart';
 import 'package:bt_football/network/layers/network_connectivity.dart';
 import 'package:bt_football/network/layers/network_performer.dart';
 import 'package:bt_football/network/network_models/network_error.dart';
@@ -34,7 +35,7 @@ void main() {
   group('matches service class', () {
     test(
         'when fetching competition matches while network is connected,'
-            ' should get list of matches', () async {
+        ' should get list of matches', () async {
       MockUtil.setNetworkConnected();
       List<Match> matches = await MatchesService()
           .fetchCompetitionMatches(CodeStrings.englishPremierLeague);
@@ -44,15 +45,29 @@ void main() {
 
     test(
         'when fetching competition matches while network is connected,'
-            ' should throw a network error', () async {
+        ' should throw a network error', () async {
       MockUtil.setNetworkDisconnected();
 
       expect(
-              () async => MatchesService()
+          () async => MatchesService()
               .fetchCompetitionMatches(CodeStrings.englishPremierLeague),
           throwsA(isA<NetworkError>()));
     });
 
+    test(
+        'when fetching most winning team in last 30 days from (Feb 15, 2022),'
+        'should show Liverpool FC', () async {
+      MockUtil.setNetworkConnected();
+      const int durationOf30Days = 30;
+      const int liverpoolTeamId = 64;
+
+      Team team = await MatchesService().getTopTeamBy(
+          competition: CodeStrings.englishPremierLeague,
+          filter: MostWinning(),
+          periodInDays: durationOf30Days);
+
+      expect(team.id, liverpoolTeamId);
+    });
   });
 
   tearDownAll(() => GetIt.instance.reset());
