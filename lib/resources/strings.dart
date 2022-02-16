@@ -44,4 +44,9 @@ class CodeStrings {
 
   //Assets
   static const String placeholder = 'assets/images/stadium.png';
+  static const String matchesMockPath =
+      'assets/json/matches_response_mock.json';
+  static const String competitionMockPath =
+      'assets/json/competition_response_mock.json';
+  static const String teamMockPath = 'assets/json/team_response_mock.json';
 }
