@@ -1,6 +1,9 @@
 import 'package:bt_football/models/exports.dart';
 
 class MatchesService {
+  Future<List<Match>> fetchCompetitionMatches(String competition) async =>
+      throw UnimplementedError();
+
   Future<List<Match>> _getMatchesInPeriod(
           {required List<Match> finishedMatches,
           required String competition,
