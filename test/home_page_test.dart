@@ -1,5 +1,6 @@
 import 'package:bt_football/bloc/matches/matches_bloc.dart';
 import 'package:bt_football/bloc/matches/matches_state.dart';
+import 'package:bt_football/models/team.dart';
 import 'package:bt_football/ui/home/home_page.dart';
 import 'package:bt_football/ui/shared_widgets/error_widget.dart';
 import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
@@ -66,6 +67,15 @@ void main() {
               tester: tester,
               givenState: MostWinningTeamError('Mock Error'),
               expectedWidget: ErrorView);
+        });
+
+    testWidgets('when a team is fetched, should display team info',
+            (WidgetTester tester) async {
+          final Team simpleTeam = Team(name: 'Liverpool FC', foundationYear: 1892);
+          await _testWidget(
+              tester: tester,
+              givenState: MostWinningTeamFetched(simpleTeam),
+              expectedWidget: TeamInfo);
         });
   });
 
