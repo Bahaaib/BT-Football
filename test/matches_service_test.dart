@@ -24,4 +24,6 @@ void main() {
   setUpAll(() async {
     _injectDependencies();
   });
+
+  tearDownAll(() => GetIt.instance.reset());
 }
