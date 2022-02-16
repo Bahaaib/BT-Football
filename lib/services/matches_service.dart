@@ -1,6 +1,12 @@
 import 'package:bt_football/models/exports.dart';
 
 class MatchesService {
+  Future<List<Match>> _getMatchesInPeriod(
+          {required List<Match> finishedMatches,
+          required String competition,
+          int periodInDays = 30}) async =>
+      throw UnimplementedError();
+
   bool _isInPeriod(Match match, DateTime startDate, DateTime endDate) =>
       throw UnimplementedError();
 
