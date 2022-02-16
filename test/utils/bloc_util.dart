@@ -10,7 +10,12 @@ class BlocUtil {
 
     when(matchesBloc.stream).thenAnswer(
       (_) => Stream.fromIterable(
-        [MatchesInitial()],
+        [
+          MatchesInitial(),
+          MostWinningTeamLoading(),
+          MostWinningTeamFetched(simpleTeam),
+          MostWinningTeamError('Mock Error')
+        ],
       ),
     );
   }
