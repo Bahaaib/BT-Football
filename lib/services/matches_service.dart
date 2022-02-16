@@ -4,6 +4,7 @@ import 'package:bt_football/network/clients/football_api_client.dart';
 import 'package:bt_football/network/layers/network_performer.dart';
 import 'package:bt_football/network/network_models/network_error.dart';
 import 'package:bt_football/network/network_models/network_result.dart';
+import 'package:bt_football/resources/strings.dart';
 import 'package:get_it/get_it.dart';
 
 class MatchesService {
@@ -30,10 +31,20 @@ class MatchesService {
   }
 
   Future<List<Match>> _getMatchesInPeriod(
-          {required List<Match> finishedMatches,
-          required String competition,
-          int periodInDays = 30}) async =>
-      throw UnimplementedError();
+      {required List<Match> finishedMatches,
+        required String competition,
+        int periodInDays = 30}) async {
+    if (periodInDays <= 0) throw CodeStrings.negativePeriod;
+
+    final DateTime endDate = await _calculateEndDate(
+        finishedMatches: finishedMatches, competition: competition);
+    final DateTime startDate =
+    _calculateStartDate(endDate: endDate, period: periodInDays);
+
+    return finishedMatches
+        .where((match) => _isInPeriod(match, startDate, endDate))
+        .toList();
+  }
 
   bool _isInPeriod(Match match, DateTime startDate, DateTime endDate) {
     if (match.date == null) return false;
