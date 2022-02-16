@@ -8,7 +8,7 @@ class MostWinning extends Filter {
   List<int?>? getTeamIdsByMatchResult({required Match match}) {
     final Score? score = match.score;
     if (score == null || score.winner == CodeStrings.draw) return null;
-    if (score.winner == CodeStrings.homeTeam) return [match.awayTeam?.id];
+    if (score.winner == CodeStrings.homeTeam) return [match.homeTeam?.id];
     return [match.awayTeam?.id];
   }
 }
