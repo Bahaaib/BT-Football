@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 
+import 'mock_utils.dart';
+
 class RequestUtil {
   final Dio _dio = Dio();
   late DioAdapter _dioAdapter;
@@ -9,6 +11,12 @@ class RequestUtil {
     _dioAdapter = DioAdapter(dio: _dio);
     _dio.httpClientAdapter = _dioAdapter;
     return _dio;
+  }
+
+  Future<void> mockTeam() async {
+    final Map<String, dynamic> response = await MockUtil.loadTeamJson();
+    const String liverpoolTeamPath = 'teams/64';
+    _mockHttpRequest(path: liverpoolTeamPath, response: response);
   }
 
   void _mockHttpRequest(
