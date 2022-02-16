@@ -1,3 +1,4 @@
+import 'package:bt_football/resources/strings.dart';
 import 'package:dio/dio.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 
@@ -11,6 +12,16 @@ class RequestUtil {
     _dioAdapter = DioAdapter(dio: _dio);
     _dio.httpClientAdapter = _dioAdapter;
     return _dio;
+  }
+
+  Future<void> mockMatches() async {
+    final Map<String, dynamic> response = await MockUtil.loadMatchesJson();
+    const String premierLeagueMatchesPath = 'competitions/PL/matches';
+    _mockHttpRequest(
+      path: premierLeagueMatchesPath,
+      response: response,
+      queryParams: {CodeStrings.matchStatus: CodeStrings.finishedStatus},
+    );
   }
 
   Future<void> mockCompetition() async {
