@@ -39,8 +39,19 @@ class MatchesService {
       throw UnimplementedError();
 
   Future<DateTime?> _fetchCompetitionEndDay(
-          {required String competition}) async =>
-      throw UnimplementedError();
+      {required String competition}) async {
+    final Result<Competition, NetworkError> resultCompetition =
+    await GetIt.instance<NetworkPerformer>()
+        .perform<Competition, Competition>(
+        route: FootballApiClient.competition(competition),
+        responseType: Competition());
+
+    Competition? result;
+
+    resultCompetition.when(
+        success: (comp) => result = comp, failure: (error) => throw error);
+    return result?.currentSeason?.endDate;
+  }
 
   DateTime _calculateStartDate(
       {required DateTime endDate, required int period}) {
