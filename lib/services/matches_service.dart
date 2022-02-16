@@ -35,8 +35,10 @@ class MatchesService {
           int periodInDays = 30}) async =>
       throw UnimplementedError();
 
-  bool _isInPeriod(Match match, DateTime startDate, DateTime endDate) =>
-      throw UnimplementedError();
+  bool _isInPeriod(Match match, DateTime startDate, DateTime endDate) {
+    if (match.date == null) return false;
+    return match.date!.isAfter(startDate) && match.date!.isBefore(endDate);
+  }
 
   Future<DateTime?> _fetchCompetitionEndDay(
       {required String competition}) async {
