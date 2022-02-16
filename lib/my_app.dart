@@ -1,6 +1,8 @@
+import 'package:bt_football/bloc/matches/matches_bloc.dart';
 import 'package:bt_football/network/layers/network_performer.dart';
 import 'package:bt_football/resources/themes.dart';
 import 'package:bt_football/routing/main_router.gr.dart';
+import 'package:bt_football/services/matches_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -40,6 +42,9 @@ class _MyAppState extends State<MyApp> {
         () => NetworkConnectivity());
     GetIt.instance
         .registerLazySingleton<NetworkPerformer>(() => NetworkPerformer());
+    GetIt.instance
+        .registerLazySingleton<MatchesService>(() => MatchesService());
+    GetIt.instance.registerLazySingleton<MatchesBloc>(() => MatchesBloc());
   }
 
   @override
