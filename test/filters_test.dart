@@ -38,4 +38,13 @@ void main() {
 
     expect(mostLosingTeam, watfordTeamId);
   });
+
+  test(
+      'when matches is filtered by most drawn team, '
+          'it should get Brighton & Hove Albion FC', () async {
+    const int brightonTeamId = 397;
+    int mostDrawnTeam = await _getTopTeamIdFor(filter: MostDraw());
+
+    expect(mostDrawnTeam, brightonTeamId);
+  });
 }
