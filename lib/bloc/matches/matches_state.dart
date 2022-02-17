@@ -1,4 +1,4 @@
-import 'package:bt_football/models/team.dart';
+import 'package:bt_football/models/exports.dart';
 
 abstract class MatchesState {}
 

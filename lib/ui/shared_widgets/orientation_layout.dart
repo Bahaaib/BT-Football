@@ -12,10 +12,10 @@ class OrientationLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return OrientationBuilder(
         builder: (BuildContext context, Orientation orientation) {
-          if (orientation == Orientation.portrait) {
-            return onPortrait;
-          }
-          return onLandscape;
-        });
+      if (orientation == Orientation.portrait) {
+        return onPortrait;
+      }
+      return onLandscape;
+    });
   }
 }

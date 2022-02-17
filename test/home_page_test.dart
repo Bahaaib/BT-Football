@@ -1,6 +1,6 @@
 import 'package:bt_football/bloc/matches/matches_bloc.dart';
 import 'package:bt_football/bloc/matches/matches_state.dart';
-import 'package:bt_football/models/team.dart';
+import 'package:bt_football/models/exports.dart';
 import 'package:bt_football/ui/home/home_page.dart';
 import 'package:bt_football/ui/shared_widgets/error_widget.dart';
 import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
