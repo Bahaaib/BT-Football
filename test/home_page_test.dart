@@ -2,8 +2,7 @@ import 'package:bt_football/bloc/matches/matches_bloc.dart';
 import 'package:bt_football/bloc/matches/matches_state.dart';
 import 'package:bt_football/models/exports.dart';
 import 'package:bt_football/ui/home/home_page.dart';
-import 'package:bt_football/ui/shared_widgets/error_widget.dart';
-import 'package:bt_football/ui/shared_widgets/loading_widget.dart';
+import 'package:bt_football/ui/shared_widgets/exports.dart';
 import 'package:bt_football/ui/team/landscape_team.dart';
 import 'package:bt_football/ui/team/tablet_portrait_team.dart';
 import 'package:bt_football/ui/team/team_info.dart';
@@ -53,13 +52,13 @@ void main() {
   }
 
   group('test home page states', () {
-    testWidgets('when app starts, should display home page',
-        (WidgetTester tester) async {
-      await _testWidget(
-          tester: tester,
-          givenState: MatchesInitial(),
-          expectedWidget: HomePage);
-    });
+    testWidgets('when app starts, should display an empty home page',
+            (WidgetTester tester) async {
+          await _testWidget(
+              tester: tester,
+              givenState: MatchesInitial(),
+              expectedWidget: EmptyView);
+        });
 
     testWidgets('when start fetching a team, should display loading widget',
         (WidgetTester tester) async {
