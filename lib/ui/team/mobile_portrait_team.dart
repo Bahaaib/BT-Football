@@ -1,4 +1,3 @@
-import 'package:bt_football/resources/dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:bt_football/ui/team/base_team.dart';
 
@@ -7,8 +6,7 @@ class MobilePortraitTeam extends BaseTeam {
       {Key? key,
       required Widget squad,
       required Widget teamInfo,
-      EdgeInsets? margin =
-          const EdgeInsets.symmetric(horizontal: AppDimens.screenPadding),
+      EdgeInsets? margin,
       EdgeInsets? padding})
       : super(
             key: key,
